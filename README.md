@@ -14,7 +14,9 @@ La idea principal del proyecto es ofrecer una herramienta ligera, visualmente at
 
 - Generación aleatoria de colores en formato HEX y HSL.
 - Selección de 6, 8 o 9 colores por paleta.
-- Copia rápida de cada código al hacer clic sobre una muestra.
+- Tarjetas de color con vista de muestra y valores HEX, RGB y HSL.
+- Copia de un color al hacer clic en cualquier parte de su tarjeta, con confirmación temporal mediante un icono de verificación.
+- Indicador animado de desplazamiento en la pantalla principal, con contorno multicolor; desaparece al comenzar a hacer scroll.
 - Feedback visual al crear una nueva combinación.
 - Menú desplegable personalizado para elegir la cantidad de colores.
 - Toggle animado para cambiar entre HEX y HSL.
@@ -45,8 +47,16 @@ ProyectoM1_EmanuelFlórez/
 │   ├── style.css
 │   └── variables.css
 ├── js/
+│   ├── app.js
+│   ├── button-liquid.js
+│   ├── clipboard.js
+│   ├── color.js
+│   ├── config.js
 │   ├── fluid.js
-│   └── script.js
+│   ├── loader.js
+│   ├── palette.js
+│   ├── script.js
+│   └── store.js
 ├── docs/
 │   ├── index.html
 │   ├── script.js
@@ -59,11 +69,17 @@ ProyectoM1_EmanuelFlórez/
 ### Archivos clave
 
 - [index.html](index.html): estructura principal de la interfaz.
-- [js/script.js](js/script.js): lógica de generación de colores, manejo del menú, cambio de modo y copia al portapapeles.
+- [js/app.js](js/app.js): inicializa la aplicación, conecta los controles y genera paletas.
+- [js/color.js](js/color.js): genera colores y calcula sus equivalencias HEX, RGB y HSL.
+- [js/palette.js](js/palette.js): renderiza las tarjetas, administra el selector y copia los colores con feedback visual.
+- [js/clipboard.js](js/clipboard.js): gestiona la copia al portapapeles.
 - [js/fluid.js](js/fluid.js): simulación visual del fondo con WebGL y efecto de fluido.
-- [css/style.css](css/style.css): estilos globales, fondo negro y layout general.
-- [css/components.css](css/components.css): componentes visuales como botones, metadatos, menú y paleta.
+- [js/button-liquid.js](js/button-liquid.js): efecto líquido reactivo del botón principal.
+- [css/style.css](css/style.css): estilos globales, fondo y pantalla de carga.
+- [css/components.css](css/components.css): estilos del hero, tarjetas, indicador de scroll, controles y botones.
 - [css/responsive.css](css/responsive.css): ajustes para pantallas pequeñas.
+
+La página principal usa los módulos de `js/` cargados desde `index.html`. `js/script.js` y los archivos de `docs/` conservan una versión anterior de la interfaz.
 
 ## Instalación y ejecución local
 
@@ -88,8 +104,10 @@ cd ProyectoM1_EmanuelFlórez
 1. Elige la cantidad de colores con el menú desplegable.
 2. Selecciona el formato: HEX o HSL.
 3. Haz clic en el botón principal para generar una nueva paleta.
-4. Presiona cualquier muestra de color para copiar el código al portapapeles.
-5. Explora la experiencia visual del fondo líquido mientras te desplazas por la página.
+4. Consulta los valores HEX, RGB y HSL de cada tarjeta.
+5. Presiona cualquier parte de una tarjeta para copiar el código; el icono de copia se convierte brevemente en una marca de verificación.
+6. Usa el indicador con flecha de la pantalla inicial para bajar al generador. Desaparece al comenzar a desplazarte.
+7. Explora la experiencia visual del fondo líquido mientras te desplazas por la página.
 
 ## Personalización del efecto de fluido
 
