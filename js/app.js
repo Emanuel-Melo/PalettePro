@@ -36,8 +36,6 @@
             }
         });
 
-        const initialPalette = generatePalette(store.getState().mode, store.getState().quantity);
-        store.setPalette(initialPalette);
     }
 
     if (document.readyState === 'loading') {

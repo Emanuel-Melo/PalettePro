@@ -30,9 +30,6 @@ body > header,
 body > main {
     position: relative;
     z-index: 1;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.45s ease, visibility 0.45s ease;
 }
 
 body.is-loading > header,
@@ -130,12 +127,4 @@ body.is-ready .page-loader {
     }
 }
 
-@keyframes slide {
-    from {
-    transform: translate(150vw, 0) scale(2, 1);
-    }
-    to {
-    transform: translate(0, 0) scale(1, 1);
-    }
-}   
 

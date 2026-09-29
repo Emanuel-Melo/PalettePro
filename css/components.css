@@ -35,8 +35,6 @@ h1 {
 	width: fit-content;
 	margin: 0;
 	text-align: center;
-	animation-duration: 3s;
-	animation-name: slide;
 }
 
 h2 {
@@ -81,6 +79,28 @@ h3 {
 	gap: 10px;
 	justify-content: center;
 	border-radius: var(--radius-md);
+}
+
+.palette-placeholder {
+	box-sizing: border-box;
+	flex: 1 0 100%;
+	min-height: 138px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.palette-placeholder[hidden] {
+	display: none;
+}
+
+.palette-spinner-scale {
+	transform: scale(2.25);
+}
+
+.palette-placeholder .loader-spinner {
+	width: 66px;
+	margin: 0;
 }
 
 .color {

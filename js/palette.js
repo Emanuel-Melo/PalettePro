@@ -22,6 +22,11 @@
     function renderPalette(store) {
         const state = store.getState();
         const cells = getColorCells();
+        const placeholder = document.querySelector('.palette-placeholder');
+
+        if (placeholder) {
+            placeholder.hidden = state.palette.length > 0;
+        }
 
         cells.forEach((cell, index) => {
             if (index < state.palette.length) {
@@ -113,6 +118,7 @@
         });
 
         bindColorClicks();
+        renderPalette(store);
         store.subscribe(() => {
             renderPalette(store);
             const currentQuantity = String(store.getState().quantity);
