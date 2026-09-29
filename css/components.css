@@ -73,18 +73,18 @@ h3 {
 	padding: 10px;
 	margin: 0 auto 20px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 112px), 1fr));
-	min-height: 160px;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 165px), 1fr));
+	min-height: 270px;
 	height: auto;
 	gap: 12px;
 	align-content: center;
-	border-radius: var(--radius-md);
+	border-radius: 18px;
 }
 
 .palette-placeholder {
 	box-sizing: border-box;
 	grid-column: 1 / -1;
-	min-height: 150px;
+	min-height: 250px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -104,43 +104,101 @@ h3 {
 }
 
 .color {
-	position: relative;
 	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	height: 146px;
 	min-width: 0;
-	padding: 0;
 	margin: 0;
-	border: 0;
-	border-radius: 10px;
 	overflow: hidden;
-	cursor: pointer;
-	box-shadow: 0 6px 16px color-mix(in srgb, var(--swatch-color) 24%, transparent);
+	border: 1px solid color-mix(in srgb, var(--swatch-color) 70%, #252833);
+	border-radius: 18px;
+	background: linear-gradient(180deg, #101116, #08090d);
+	box-shadow: 0 0 22px color-mix(in srgb, var(--swatch-color) 24%, transparent);
 	transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+}
+
+.color[hidden] {
+	display: none;
 }
 
 .color:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 9px 20px color-mix(in srgb, var(--swatch-color) 34%, transparent);
+	box-shadow: 0 0 28px color-mix(in srgb, var(--swatch-color) 38%, transparent);
+}
+
+.swatch-preview {
+	height: 148px;
+	background: #252833;
+}
+
+.swatch-details {
+	min-height: 112px;
+	box-sizing: border-box;
+	padding: 13px 15px 14px;
+	border-top: 1px solid color-mix(in srgb, var(--swatch-color) 58%, transparent);
+}
+
+.swatch-heading {
+	display: flex;
+	min-width: 0;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 10px;
 }
 
 .swatch-code {
-	box-sizing: border-box;
-	width: 100%;
-	min-height: 48px;
-	display: flex;
-	align-items: center;
-	padding: 8px 10px;
-	border-top: 1px solid color-mix(in srgb, var(--swatch-color) 58%, transparent);
-	background: color-mix(in srgb, var(--swatch-color) 22%, #08090c);
+	min-width: 0;
 	color: #f1f3f7;
-	font-size: 11px;
-	font-weight: 600;
-	line-height: 1.3;
-	text-align: left;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.2;
 	overflow-wrap: anywhere;
+}
+
+.swatch-details p {
+	margin: 4px 0 0;
+	color: #a5a8b2;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.35;
+	white-space: nowrap;
+}
+
+.copy-color {
+	display: grid;
+	width: 28px;
+	height: 28px;
+	flex: 0 0 28px;
+	place-items: center;
+	padding: 0;
+	border: 0;
+	border-radius: 5px;
+	background: transparent;
+	color: #d5d7de;
+	cursor: pointer;
+	transition: color var(--transition-fast) ease, background var(--transition-fast) ease;
+}
+
+.copy-color svg {
+	width: 17px;
+	height: 17px;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.8;
+}
+
+.copy-color:hover,
+.copy-color:focus-visible,
+.copy-color.is-copied {
+	background: color-mix(in srgb, var(--swatch-color) 22%, transparent);
+	color: #fff;
+	outline: none;
+}
+
+.color:focus-within {
+	outline: 2px solid color-mix(in srgb, var(--swatch-color) 70%, white);
+	outline-offset: 3px;
 }
 
 label{

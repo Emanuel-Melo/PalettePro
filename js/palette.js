@@ -31,36 +31,52 @@
         cells.forEach((cell, index) => {
             if (index < state.palette.length) {
                 const color = state.palette[index];
-                cell.style.backgroundColor = color;
-                cell.style.setProperty('--swatch-color', color);
-                cell.querySelector('.swatch-code').textContent = color;
+                const details = global.PaletteProColor.getColorDetails(color);
+                const preview = cell.querySelector('.swatch-preview');
+                const code = cell.querySelector('.swatch-code');
+                const copyButton = cell.querySelector('.copy-color');
+
+                if (!details) {
+                    cell.hidden = true;
+                    return;
+                }
+
+                preview.style.backgroundColor = color;
+                cell.style.setProperty('--swatch-color', details.hex);
+                code.textContent = color;
+                cell.querySelector('.swatch-rgb').textContent = details.rgb;
+                cell.querySelector('.swatch-hsl').textContent = details.hsl;
                 cell.dataset.originalText = color;
-                cell.style.display = 'flex';
+                copyButton.setAttribute('aria-label', `Copiar ${color}`);
+                copyButton.title = `Copiar ${color}`;
+                cell.hidden = false;
             } else {
-                cell.style.display = 'none';
-                cell.querySelector('.swatch-code').textContent = '';
+                cell.hidden = true;
                 cell.dataset.originalText = '';
             }
         });
     }
 
     function bindColorClicks() {
-        const cells = getColorCells();
+        const copyButtons = Array.from(document.querySelectorAll('.copy-color'));
 
-        cells.forEach((cell) => {
-            cell.addEventListener('click', async function () {
-                const text = cell.dataset.originalText || cell.textContent;
-                const codeLabel = cell.querySelector('.swatch-code');
+        copyButtons.forEach((button) => {
+            button.addEventListener('click', async function () {
+                const cell = button.closest('.color');
+                const text = cell ? cell.dataset.originalText : '';
                 if (!text) {
                     return;
                 }
 
                 try {
                     await global.PaletteProClipboard.copyText(text);
-                    const previousText = codeLabel.textContent;
-                    codeLabel.textContent = 'Copiado ✅';
+                    button.setAttribute('aria-label', 'Color copiado');
+                    button.title = 'Color copiado';
+                    button.classList.add('is-copied');
                     setTimeout(() => {
-                        codeLabel.textContent = previousText;
+                        button.setAttribute('aria-label', `Copiar ${text}`);
+                        button.title = `Copiar ${text}`;
+                        button.classList.remove('is-copied');
                     }, global.PaletteProConfig.copyResetDelay);
                 } catch (error) {
                     console.error('Error al copiar color:', error);
