@@ -16,9 +16,21 @@
     <script src="js/store.js" defer></script>
     <script src="js/palette.js" defer></script>
     <script src="js/app.js" defer></script>
+    <script src="js/loader.js" defer></script>
 </head>
-<body>
+<body class="is-loading">
     <canvas id="water-canvas" aria-hidden="true"></canvas>
+    <div class="page-loader" id="page-loader" role="status" aria-live="polite">
+        <div class="loader-content">
+            <div class="loader-spinner" aria-hidden="true"></div>
+            <p class="loader-brand">Palette<span>Pro</span></p>
+            <p class="loader-caption">Generando tu paleta de colores...</p>
+            <div class="loader-progress" role="progressbar" aria-label="Carga de PalettePro" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div class="loader-progress-fill" id="loader-progress-fill"></div>
+            </div>
+            <span class="loader-percentage" id="loader-percentage" aria-hidden="true">0%</span>
+        </div>
+    </div>
     <header class="hero">
         <span class="header-info">Since: 2026</span>
         <h1>PalettePro</h1>
