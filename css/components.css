@@ -107,6 +107,7 @@ h3 {
 	box-sizing: border-box;
 	min-width: 0;
 	margin: 0;
+	cursor: pointer;
 	overflow: hidden;
 	border: 1px solid color-mix(in srgb, var(--swatch-color) 70%, #252833);
 	border-radius: 18px;
@@ -194,6 +195,19 @@ h3 {
 	background: color-mix(in srgb, var(--swatch-color) 22%, transparent);
 	color: #fff;
 	outline: none;
+}
+
+.copy-color.is-copied svg {
+	display: none;
+}
+
+.copy-color.is-copied::after {
+	width: 6px;
+	height: 10px;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	content: '';
+	transform: rotate(45deg);
 }
 
 .color:focus-within {

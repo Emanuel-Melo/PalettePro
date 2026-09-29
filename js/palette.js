@@ -58,12 +58,12 @@
     }
 
     function bindColorClicks() {
-        const copyButtons = Array.from(document.querySelectorAll('.copy-color'));
+        const cells = getColorCells();
 
-        copyButtons.forEach((button) => {
-            button.addEventListener('click', async function () {
-                const cell = button.closest('.color');
-                const text = cell ? cell.dataset.originalText : '';
+        cells.forEach((cell) => {
+            cell.addEventListener('click', async function () {
+                const text = cell.dataset.originalText;
+                const button = cell.querySelector('.copy-color');
                 if (!text) {
                     return;
                 }
