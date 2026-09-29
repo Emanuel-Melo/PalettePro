@@ -22,11 +22,18 @@
             });
         }
 
-        button.addEventListener('click', function () {
-            const currentState = store.getState();
-            const nextPalette = generatePalette(currentState.mode, currentState.quantity);
-            store.setPalette(nextPalette);
-            window.alert('Paleta generada 🎨');
+        button.addEventListener('click', async function () {
+            button.disabled = true;
+
+            try {
+                await global.PaletteProLoader.show(function () {
+                    const currentState = store.getState();
+                    const nextPalette = generatePalette(currentState.mode, currentState.quantity);
+                    store.setPalette(nextPalette);
+                });
+            } finally {
+                button.disabled = false;
+            }
         });
 
         const initialPalette = generatePalette(store.getState().mode, store.getState().quantity);
