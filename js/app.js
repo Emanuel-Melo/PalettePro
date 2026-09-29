@@ -6,6 +6,17 @@
 
         initPaletteUI(store);
 
+        const scrollCue = document.querySelector('.scroll-cue');
+        if (scrollCue) {
+            if (window.scrollY > 0) {
+                scrollCue.classList.add('is-hidden');
+            } else {
+                window.addEventListener('scroll', function () {
+                    scrollCue.classList.add('is-hidden');
+                }, { once: true, passive: true });
+            }
+        }
+
         const button = document.getElementById('generar');
         const radios = Array.from(document.getElementsByName('mode'));
         const select = document.getElementById('cantidad');

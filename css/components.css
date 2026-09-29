@@ -13,6 +13,7 @@
 }
 
 .hero {
+	position: relative;
 	min-height: 100svh;
 	box-sizing: border-box;
 	display: flex;
@@ -21,6 +22,63 @@
 	justify-content: center;
 	gap: 12px;
 	padding: 32px 20px;
+}
+
+.scroll-cue {
+	position: absolute;
+	bottom: 28px;
+	left: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 7px;
+	padding: 10px 15px;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	background: linear-gradient(#08090d, #08090d) padding-box, var(--title-gradient) border-box;
+	box-shadow: 0 0 18px rgba(0, 229, 199, 0.16);
+	color: #f1f3f7;
+	font-size: 11px;
+	line-height: 1;
+	text-decoration: none;
+	transform: translateX(-50%);
+	transition: opacity 250ms ease, transform 250ms ease, visibility 250ms ease;
+}
+
+.scroll-cue svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.8;
+	animation: scroll-cue-bob 750ms ease-in-out infinite alternate;
+}
+
+.scroll-cue:hover {
+	color: #fff;
+}
+
+.scroll-cue.is-hidden {
+	visibility: hidden;
+	opacity: 0;
+	transform: translate(-50%, 8px);
+	pointer-events: none;
+}
+
+@keyframes scroll-cue-bob {
+	to {
+		transform: translateY(6px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.scroll-cue,
+	.scroll-cue svg {
+		animation: none;
+		transition: none;
+	}
 }
 
 h1 {
