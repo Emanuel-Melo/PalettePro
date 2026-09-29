@@ -9,10 +9,6 @@
 		font-size: var(--fs-h3-sm);
 		margin-bottom: 28px;
 	}
-	.color {
-		font-size: 14px;
-		padding: 10px;
-	}
 	button {
 		font-size: 20px;
 		height: auto;

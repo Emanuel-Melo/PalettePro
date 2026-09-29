@@ -32,12 +32,13 @@
             if (index < state.palette.length) {
                 const color = state.palette[index];
                 cell.style.backgroundColor = color;
-                cell.textContent = color;
+                cell.style.setProperty('--swatch-color', color);
+                cell.querySelector('.swatch-code').textContent = color;
                 cell.dataset.originalText = color;
                 cell.style.display = 'flex';
             } else {
                 cell.style.display = 'none';
-                cell.textContent = '';
+                cell.querySelector('.swatch-code').textContent = '';
                 cell.dataset.originalText = '';
             }
         });
@@ -49,16 +50,17 @@
         cells.forEach((cell) => {
             cell.addEventListener('click', async function () {
                 const text = cell.dataset.originalText || cell.textContent;
+                const codeLabel = cell.querySelector('.swatch-code');
                 if (!text) {
                     return;
                 }
 
                 try {
                     await global.PaletteProClipboard.copyText(text);
-                    const previousText = cell.textContent;
-                    cell.textContent = 'Copiado ✅';
+                    const previousText = codeLabel.textContent;
+                    codeLabel.textContent = 'Copiado ✅';
                     setTimeout(() => {
-                        cell.textContent = previousText;
+                        codeLabel.textContent = previousText;
                     }, global.PaletteProConfig.copyResetDelay);
                 } catch (error) {
                     console.error('Error al copiar color:', error);
