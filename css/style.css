@@ -27,13 +27,15 @@ body {
 }
 
 body > header,
-body > main {
+body > main,
+body > footer {
     position: relative;
     z-index: 1;
 }
 
 body.is-loading > header,
-body.is-loading > main {
+body.is-loading > main,
+body.is-loading > footer {
     opacity: 0;
     visibility: hidden;
 }

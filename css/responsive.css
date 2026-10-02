@@ -43,4 +43,52 @@
 	.card-drop {
 		width: min(200px, calc(100% - 24px));
 	}
+	.site-footer {
+		width: min(100% - 36px, 560px);
+		padding-top: 34px;
+	}
+	.footer-content {
+		grid-template-columns: 1fr 1fr;
+		gap: 30px 22px;
+		padding-bottom: 28px;
+	}
+	.footer-brand {
+		grid-column: 1 / -1;
+	}
+	.footer-description {
+		max-width: 360px;
+	}
+	.footer-technologies h2,
+	.footer-social h2 {
+		font-size: 12px;
+	}
+	.technology-list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.technology-list li {
+		gap: 6px;
+		padding-inline: 7px;
+		font-size: 9px;
+	}
+	.footer-bottom {
+		align-items: flex-start;
+	}
+}
+
+@media (max-width: 480px) {
+	.footer-content {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.footer-brand,
+	.footer-technologies,
+	.footer-social {
+		grid-column: auto;
+	}
+	.technology-list {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.footer-bottom {
+		flex-direction: column;
+		gap: 5px;
+	}
 }

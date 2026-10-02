@@ -4,7 +4,7 @@ PalettePro es una aplicación web para generar paletas de color aleatorias con u
 
 ## Demo
 
-https://proyecto-m1-emanuel-florez.vercel.app/
+https://palette--pro.vercel.app/ 
 
 ## Descripción
 
