@@ -145,9 +145,9 @@ const fluidConfig = {
 
 ## Capturas
 
-![Vista principal de PalettePro](Documentacion/capturas/Capturapáginaweb.png)
+![Vista principal de PalettePro](Documentacion/capturas/PalettePro1.png)
 
-![Vista responsive de PalettePro](Documentacion/capturas/Capturapáginaweb2.png)
+![Vista responsive de PalettePro](Documentacion/capturas/PalettePro2.png)
 
 ## Mejoras futuras
 
